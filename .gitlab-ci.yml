@@ -19,7 +19,7 @@ stages:
   - Release
   - Clean
 
-Configuration:
+Grype:
   stage: Test
   extends: .standalone
   script:
