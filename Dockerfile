@@ -3,6 +3,7 @@ LABEL maintainer="Thomas GUIRRIEC <thomas@guirriec.frr>"
 COPY apk_packages /
 ENV USERNAME='grype'
 ENV UID=1000
+SHELL ["/bin/sh", "-o", "pipefail", "-c"]
 RUN xargs -a /apk_packages apk add --no-cache --update \
     && useradd -l -m -u ${UID} -U -s /bin/sh ${USERNAME} \
     && curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin \
