@@ -1,4 +1,4 @@
-FROM alpine:3.17
+FROM alpine:3.18
 LABEL maintainer="Thomas GUIRRIEC <thomas@guirriec.frr>"
 COPY apk_packages /
 ENV USERNAME='grype'
@@ -12,5 +12,5 @@ RUN xargs -a /apk_packages apk add --no-cache --update \
          /tmp/* \
          /root/.cache/*
 USER ${USERNAME}
-HEALTHCHECK CMD gryp version || exit 1
+HEALTHCHECK CMD grype version || exit 1
 ENTRYPOINT ["/bin/sh", "-c", "sleep infinity"]
